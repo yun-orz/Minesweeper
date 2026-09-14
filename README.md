@@ -13,9 +13,24 @@
 - `*` 表示地雷（游戏结束后显示）
 - 第一次选择的格子保证不会是雷
 
-## 最简单的打开方式
+## Windows 最省事：下载 EXE 直接运行
 
-C 程序需要先编译一次。如果电脑已经安装 GCC，在仓库目录运行下面一行即可。
+仓库已经配置 GitHub Actions，会自动生成 Windows 版 `minesweeper.exe`，不需要你自己安装 GCC。
+
+1. 打开仓库顶部的 **Actions**。
+2. 点击最新一次 **Build Windows EXE**。
+3. 在页面底部的 **Artifacts** 下载 `Minesweeper-Windows`。
+4. 解压 ZIP，双击里面的 `minesweeper.exe` 即可开始游戏。
+
+Actions 页面：
+
+https://github.com/yun-orz/Minesweeper/actions
+
+> GitHub 的 Artifact 会以 ZIP 形式下载，解压一次后即可直接双击 EXE。
+
+## 自己编译
+
+如果电脑已经安装 GCC，也可以在仓库目录直接编译运行。
 
 ### Windows
 
@@ -37,32 +52,13 @@ Open cell (row column): 3 5
 
 表示打开第 3 行、第 5 列。
 
-## 分开编译和运行
-
-如果想分两步执行：
-
-```bash
-gcc minesweeper.c -o minesweeper
-```
-
-然后：
-
-```bash
-./minesweeper
-```
-
-Windows 下运行：
-
-```bash
-minesweeper.exe
-```
-
 ## 文件
 
 ```text
 Minesweeper/
-├── minesweeper.c   # 游戏全部代码
-└── README.md       # 使用说明
+├── .github/workflows/build-windows.yml  # 自动生成 Windows EXE
+├── minesweeper.c                        # 游戏全部代码
+└── README.md                            # 使用说明
 ```
 
 代码只使用 C 标准库中的 `stdio.h`、`stdlib.h` 和 `time.h`，适合作为基础 C 语言练习项目。
